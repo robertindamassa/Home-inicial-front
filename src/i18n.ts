@@ -6,7 +6,7 @@ const resources = {
     translation: {
       home: 'Home',
       welcomeBack: 'Welcome Back!',
-      greeting: 'Hi, Spruce Springclean',
+      greeting: 'Hi, Robert',
       totalExpenditure: 'Total Expenditure',
       recentTransactions: 'Recent Transactions',
       seeAll: 'See All',
@@ -18,15 +18,13 @@ const resources = {
       moneyOut: 'Money Out',
       moneyIn: 'Money In',
       historyTab: 'History',
-      alertsTab: 'Alerts',
-      profileTab: 'Profile',
     },
   },
   pt: {
     translation: {
       home: 'Início',
       welcomeBack: 'Bem-vindo de volta!',
-      greeting: 'Olá, Spruce Springclean',
+      greeting: 'Olá, Roberto',
       totalExpenditure: 'Despesa Total',
       recentTransactions: 'Transações Recentes',
       seeAll: 'Ver Tudo',
@@ -38,8 +36,6 @@ const resources = {
       moneyOut: 'Saída',
       moneyIn: 'Entrada',
       historyTab: 'Histórico',
-      alertsTab: 'Alertas',
-      profileTab: 'Perfil',
     },
   },
 };

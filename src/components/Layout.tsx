@@ -3,8 +3,6 @@ import { Outlet, useNavigate, useLocation } from 'react-router-dom';
 import { Box, BottomNavigation, BottomNavigationAction, Paper } from '@mui/material';
 import HomeIcon from '@mui/icons-material/Home';
 import ReceiptLongIcon from '@mui/icons-material/ReceiptLong';
-import NotificationsIcon from '@mui/icons-material/Notifications';
-import PersonIcon from '@mui/icons-material/Person';
 import { useTranslation } from 'react-i18next';
 
 const Layout: React.FC = () => {
@@ -33,8 +31,6 @@ const Layout: React.FC = () => {
         >
           <BottomNavigationAction label={t('home')} value="/" icon={<HomeIcon />} />
           <BottomNavigationAction label={t('historyTab')} value="/history" icon={<ReceiptLongIcon />} />
-          <BottomNavigationAction label={t('alertsTab')} value="/alerts" icon={<NotificationsIcon />} />
-          <BottomNavigationAction label={t('profileTab')} value="/profile" icon={<PersonIcon />} />
         </BottomNavigation>
       </Paper>
     </Box>
