@@ -19,7 +19,7 @@ const Layout: React.FC = () => {
         <BottomNavigation
           showLabels
           value={location.pathname}
-          onChange={(_, newValue) => {
+          onChange={(_event, newValue) => {
             navigate(newValue);
           }}
           sx={{
