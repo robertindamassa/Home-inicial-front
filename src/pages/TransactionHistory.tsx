@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Box, Typography, IconButton, List, Paper, Tabs, Tab } from '@mui/material';
+import { Box, Typography, IconButton, List, Paper, Tabs, Tab, Stack, Chip } from '@mui/material';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import { useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
@@ -18,15 +18,17 @@ function TransactionHistory() {
   });
 
   return (
-    <Box sx={{ flexGrow: 1, position: 'relative', bgcolor: 'background.default', pb: 4 }}>
-      {/* Header */}
+    <Box sx={{ flexGrow: 1, position: 'relative', pb: 4 }}>
       <Box
         sx={{
-          background: 'linear-gradient(135deg, #6a11cb 0%, #2575fc 100%)',
+          background: 'linear-gradient(135deg, #0f172a 0%, #2563eb 60%, #38bdf8 100%)',
           pt: 4,
           pb: 6,
           px: 2,
           color: 'white',
+          borderBottomLeftRadius: 32,
+          borderBottomRightRadius: 32,
+          boxShadow: '0 24px 48px rgba(15, 23, 42, 0.18)',
         }}
       >
         <Box sx={{ display: 'flex', alignItems: 'center', mb: 2 }}>
@@ -37,17 +39,31 @@ function TransactionHistory() {
             {t('transactionHistory')}
           </Typography>
         </Box>
+
+        <Stack direction="row" spacing={1} sx={{ mt: 3 }}>
+          <Chip label={t('all')} sx={{ bgcolor: 'rgba(255,255,255,0.16)', color: 'white' }} />
+          <Chip label={t('income')} sx={{ bgcolor: 'rgba(255,255,255,0.16)', color: 'white' }} />
+          <Chip label={t('expense')} sx={{ bgcolor: 'rgba(255,255,255,0.16)', color: 'white' }} />
+        </Stack>
       </Box>
 
-      {/* Main Content Area */}
       <Box sx={{ px: 2, mt: -4, position: 'relative', zIndex: 1 }}>
-        <Paper elevation={4} sx={{ borderRadius: 4, pb: 2, bgcolor: 'background.paper' }}>
-          
-          <Tabs 
-            value={tabIndex} 
-            onChange={(_, newValue) => setTabIndex(newValue)} 
-            indicatorColor="primary" 
-            textColor="primary" 
+        <Paper
+          elevation={0}
+          sx={{
+            borderRadius: 5,
+            pb: 2,
+            bgcolor: 'background.paper',
+            border: '1px solid',
+            borderColor: 'divider',
+            boxShadow: '0 18px 40px rgba(15, 23, 42, 0.08)',
+          }}
+        >
+          <Tabs
+            value={tabIndex}
+            onChange={(_, newValue) => setTabIndex(newValue)}
+            indicatorColor="primary"
+            textColor="primary"
             variant="fullWidth"
             sx={{ borderBottom: 1, borderColor: 'divider', mb: 2, borderRadius: '16px 16px 0 0' }}
           >

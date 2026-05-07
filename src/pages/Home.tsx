@@ -1,5 +1,5 @@
 import { useContext } from 'react';
-import { Box, Typography, IconButton, Paper, List } from '@mui/material';
+import { Box, Typography, IconButton, Paper, List, Stack, Card, CardContent } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
 import MenuIcon from '@mui/icons-material/Menu';
 import NotificationsNoneIcon from '@mui/icons-material/NotificationsNone';
@@ -22,17 +22,17 @@ const Home: React.FC = () => {
   };
 
   return (
-    <Box sx={{ flexGrow: 1, position: 'relative', bgcolor: 'background.default', pb: 4 }}>
-      {/* Header Section with Gradient */}
+    <Box sx={{ flexGrow: 1, position: 'relative', pb: 4 }}>
       <Box
         sx={{
-          background: 'linear-gradient(135deg, #6a11cb 0%, #2575fc 100%)',
+          background: 'linear-gradient(135deg, #0f172a 0%, #2563eb 60%, #38bdf8 100%)',
           pt: 4,
           pb: 12,
           px: 2,
           color: 'white',
           borderBottomLeftRadius: 32,
           borderBottomRightRadius: 32,
+          boxShadow: '0 24px 48px rgba(15, 23, 42, 0.18)',
         }}
       >
         <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', mb: 3 }}>
@@ -61,28 +61,54 @@ const Home: React.FC = () => {
         <Typography variant="subtitle2" sx={{ opacity: 0.8 }}>
           {t('greeting')}
         </Typography>
+
+        <Stack direction="row" spacing={1.5} sx={{ mt: 4 }}>
+          {[
+            { label: t('balance'), value: '$12,480' },
+            { label: t('income'), value: '$8,240' },
+            { label: t('expense'), value: '$3,760' },
+          ].map((item) => (
+            <Card key={item.label} sx={{ flex: 1, bgcolor: 'rgba(255,255,255,0.12)', color: 'white' }}>
+              <CardContent sx={{ p: 1.5, '&:last-child': { pb: 1.5 } }}>
+                <Typography variant="caption" sx={{ opacity: 0.8 }}>
+                  {item.label}
+                </Typography>
+                <Typography variant="subtitle2" fontWeight={800}>
+                  {item.value}
+                </Typography>
+              </CardContent>
+            </Card>
+          ))}
+        </Stack>
       </Box>
 
-      {/* Main Floating Card */}
       <Box sx={{ px: 2, mt: -8, position: 'relative', zIndex: 1 }}>
         <Paper
-          elevation={4}
+          elevation={0}
           sx={{
             p: 3,
-            borderRadius: 4,
+            borderRadius: 5,
             bgcolor: 'background.paper',
+            border: '1px solid',
+            borderColor: 'divider',
+            boxShadow: '0 18px 40px rgba(15, 23, 42, 0.08)',
           }}
         >
-          {/* Expenditure Header */}
-          <Box sx={{ textAlign: 'center' }}>
-             <Box sx={{ width: 40, height: 4, bgcolor: 'divider', borderRadius: 2, mb: 2, mx: 'auto' }} />
-          </Box>
-          <Typography variant="caption" color="text.secondary" fontWeight="bold">
-            {t('totalExpenditure')}
-          </Typography>
-          <Typography variant="h4" fontWeight="bold" sx={{ mt: 1, mb: 3 }}>
-            $60,000.00
-          </Typography>
+          <Stack direction="row" alignItems="center" justifyContent="space-between" sx={{ mb: 2 }}>
+            <Box>
+              <Typography variant="caption" color="text.secondary" fontWeight="bold">
+                {t('totalExpenditure')}
+              </Typography>
+              <Typography variant="h4" fontWeight="bold" sx={{ mt: 0.5 }}>
+                $60,000.00
+              </Typography>
+            </Box>
+            <Box sx={{ px: 1.5, py: 0.75, borderRadius: 999, bgcolor: 'action.hover' }}>
+              <Typography variant="caption" fontWeight={700}>
+                {t('thisWeek')}
+              </Typography>
+            </Box>
+          </Stack>
 
           {/* Bar Chart */}
           <Box sx={{ height: 200, width: '100%', mb: 4 }}>
@@ -108,7 +134,6 @@ const Home: React.FC = () => {
             </ResponsiveContainer>
           </Box>
 
-          {/* Recent Transactions Header */}
           <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', mb: 2 }}>
             <Typography variant="h6" fontWeight="bold">
               {t('recentTransactions')}
@@ -123,7 +148,6 @@ const Home: React.FC = () => {
             </Typography>
           </Box>
 
-          {/* Transactions List */}
           <List disablePadding>
             {recentTransactions.map((transaction) => (
               <TransactionListItem
